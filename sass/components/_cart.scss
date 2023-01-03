@@ -1,0 +1,32 @@
+.cart {
+  width: 500px;
+  border: 1px solid red;
+
+  &__header {
+    text-align: center;
+  }
+
+  &__id,
+  &__name {
+    font-size: 2rem;
+  }
+
+  &__inc,
+  &__dec {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $clr-primary-light-2;
+    color: $clr-black;
+    @include flexCenter;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__quantity {
+    width: 25px;
+    text-align: center;
+  }
+}

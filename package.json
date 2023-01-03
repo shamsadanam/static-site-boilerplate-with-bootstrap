@@ -1,0 +1,50 @@
+{
+  "name": "sass-starter",
+  "version": "0.0.1",
+  "description": "Basic Sass outline with SMACSS architecture.",
+  "main": "index.js",
+  "scripts": {
+    "html": "cpx \"*.html\" dist/",
+    "fonts": "cpx fonts/**/* dist/fonts",
+    "js": "cpx js/**/* dist/js",
+    "images": "cpx images/**/* dist/images/",
+    "sass": "sass sass/style.scss dist/css/style.css",
+    "watch-html": "cpx \"*.html\" dist/ --watch",
+    "watch-fonts": "cpx fonts/**/* dist/fonts --watch",
+    "watch-js": "cpx js/**/* dist/js/ --watch",
+    "watch-images": "cpx images/**/* dist/images/ --watch",
+    "watch-sass": "sass -w sass/style.scss dist/css/style.css",
+    "clean": "rimraf dist/",
+    "clean-dist": "rimraf dist/**/* !dist/images/ ! dist/images/**/*",
+    "imagemin": "imagemin images/**/* --out-dir=dist/images/",
+    "start": "concurrently \"npm:watch-html\" \"npm:watch-js\" \"npm:watch-images\" \"npm:watch-fonts\" \"npm:watch-sass\" \"npm:serve\"",
+    "build": "npm install && npm run clean-dist && npm run sass && npm run imagemin && npm run fonts && npm run js && npm run html",
+    "serve": "browser-sync start --server \"dist\" --files \"dist\" --port 8081",
+    "deploy": "npm run build && gh-pages -d dist",
+    "prettier": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sshikhrakar/Sass-Starter.git"
+  },
+  "author": "Shirish Shikhrakar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sshikhrakar/Sass-Starter/issues"
+  },
+  "homepage": "https://github.com/sshikhrakar/Sass-Starter#readme",
+  "devDependencies": {
+    "concurrently": "^6.5.1",
+    "connect-history-api-fallback": "^1.6.0",
+    "cpx2": "^4.2.0",
+    "imagemin-cli": "^7.0.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.55.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "browser-sync": "^2.27.10",
+    "gh-pages": "^3.2.3",
+    "rimraf": "^3.0.2"
+  }
+}
